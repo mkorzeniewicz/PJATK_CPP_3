@@ -1,0 +1,2 @@
+﻿  ConsoleApplication4.cpp
+c:\users\s15816\documents\visual studio 2015\projects\consoleapplication4\consoleapplication4\consoleapplication4.cpp(78): error C4700: uninitialized local variable 'imie' used
