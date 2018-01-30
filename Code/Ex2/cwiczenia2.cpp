@@ -98,14 +98,4 @@ void zad3() {
 
 	char* indicator = "Ala ma kota, a kot ma ale";
 
-//	int* split(indicator);
-
 }
-
-//int* split(char* str) {
-//	while (*str) {
-//		if
-//	}
-//
-//}
-
