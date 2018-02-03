@@ -1,0 +1,38 @@
+Zad. 3 C
+	 Zad. 4 D
+	 int fun (int & m, int * n){
+	++m;
+	return *n -1;
+}
+
+int main()
+{
+	int a = 1, b= 2;
+	int c = fun(a, &b);
+	cout << a << b << c << endl;
+	Zad. 5
+	
+	Zad. 16 C
+	struct Klasa{
+	int a; 
+	char * b = ""; 
+	int c;
+	Klasa(int a, char * b = "", int c){
+		this
+	}
+};
+	Klasa * k = new Klasa (1, "napis", 2);
+	Zad. 8 ?
+	
+	Zad. 17 B
+		int fun(int a, int * pb, int &c  ){
+		++a; ++*pb; ++c;
+		return a + *pb + c;
+	}
+
+int main(){
+	int a = 0, b=1, c=2, x = fun(a, &b, c);
+	cout << a << b << c << x << endl;
+	
+	Zad. 21
+	

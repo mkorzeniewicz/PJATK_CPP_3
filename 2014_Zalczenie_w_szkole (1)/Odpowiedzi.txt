@@ -1,0 +1,94 @@
+zad.1 c
+	zad. 2 
+	int k = 7, m, *p = &k;
+	p=&m;
+	//p=5; nieprawidłowe
+	*p=5;
+	m=*p;
+	
+	zad. 3 c
+	Zad. 4 wszystkie
+
+	int k = 7, *pk = &k;
+	double x = 7, *px = &x;
+	F(&k, k);
+	F(&k);
+	F(pk, *pk, x);
+	F(pk, *pk, *pk);
+	void F(int*, int = 0, double =0);
+	void F(int * k, int a, double b){
+};
+	zad. 5 D
+	Zad. 6 C
+	Zad. 7 D 
+	zad. 8 C
+	ostream& operator<<(ostream&, const Klasa&);
+	zad. 9
+	zad. 10 C
+	Zad. 11 E - można wywoływać &coś za pomocą coś lub jeśli utworzymy wskaźnik i przypiszemy &coś, to *pcoś
+	int F(int &n){
+	cout << n << endl;
+	return n;
+}
+		int k=1, *m=&k, &n = *m;
+	int z = 7;
+	int * zp = &z;
+	//m = F(k); 
+	n=F(*m);
+
+	 //n=F(&k);
+	 *m=F(*m);
+	 //k=F(*k);
+	*zp=F(*m);
+	*/
+	Zad. 12 C
+	const char * s = "UVWXYZ";
+cout << *(&s[3]-2) << endl;
+	zad. 13 A wyrażenie p[i] jest dokładnie równoważne *(p+i).
+	Zad. 14 B
+	struct B{
+	
+};
+
+struct A{
+	//A a;
+	A* pa;
+	B b;
+};
+	zad. 15 a
+		const int *p, k=7; p = &k;
+	cout << *p << endl;
+	cout << p << endl;
+	cout << &p << endl;
+	cout << &k << endl;
+	
+	zad. 16 B
+		int * i[10] = {0}; 
+	int q = 1; 
+	int *p = &q;
+	
+	//i[5] = q;
+	i[5] = &q;
+	//i[5] = &p;
+	i[5] = p;
+	p = i[0];
+	Zad. 17 C
+		//const int k - const musi zawsze być zain
+	//int k, *m = &k;
+	//int *k, m= &k;
+	int k = 7, &m = k;
+	zad. 18 A
+	ZAd. 19 B
+	int tab[] = {1,2,3,4,5}, *p = tab+1;
+
+cout << *(p+1) << endl;
+	Zad. 20 A ?
+	Zad. 21 D
+		Klasa k, *p;
+	//*p= new Klasa();
+	//k= new Klasa();
+	//*k = new Klasa();
+	p = new Klasa();
+	Klasa z(k);
+	Klasa z = k;
+	Zad. 22 a nie, b nie, c nie, d tak , e nie -> B
