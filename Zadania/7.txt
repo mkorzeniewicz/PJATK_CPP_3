@@ -1,0 +1,325 @@
+//zad.1
+
+#include <cstdlib>
+#include <iostream>
+
+using namespace std;
+class Osoba{
+      char* imie;
+      int wiek;
+      
+      public:
+             Osoba(){
+                    char input[100];
+                    cout << "podaj imie: ";
+                    cin >> input;
+                    imie = new char[ strlen(input) + 1];
+                    memcpy( imie, input, strlen(input) + 1);
+                    cout << "podaj wiek: ";
+                    cin >> wiek;
+                    cout<<"UTWORZONO OBIEKT"<<endl;
+             }
+             Osoba(char* imie, int wiek){ 
+                    this->imie = new char[ strlen(imie) + 1];
+                    memcpy( this->imie, imie, strlen(imie) + 1);
+                    this->wiek=wiek;
+                    cout<<"UTWORZONO OBIEKT"<<endl; 
+             }
+             Osoba(Osoba &o){
+                    this->imie = new char[ strlen(o.imie) + 1];
+                    memcpy( this->imie, o.imie, strlen(o.imie) + 1);
+                    wiek=o.wiek;
+             }
+             ~Osoba(){
+                    cout<<"ZNISZCZONO OBIEKT"<<endl;
+                    delete[] imie;
+             }
+             void show(){
+                  cout<<"imie "<<imie<<endl;
+                  cout<<"wiek "<<wiek<<endl;
+             }
+             friend void show (Osoba &p);
+};
+void show (Osoba &p)
+{ 
+  cout<<p.wiek<<endl;
+  cout<<p.imie<<endl;
+} 
+
+int main(int argc, char *argv[])
+{
+    Osoba* o = new Osoba();
+    o->show();
+    Osoba &ref = *o; 
+    Osoba* o1 = new Osoba(ref);
+     o->show();
+      o1->show();
+    delete o;
+     o1->show();
+    system("PAUSE");
+    return EXIT_SUCCESS;
+}
+
+
+
+class Osoba{
+      char* imie;
+      char* nazwisko;
+      int wiek;
+      Osoba* dzieci;
+      public:
+             Osoba(){
+                    char input[100];
+                    cout << "podaj imie: ";
+                    cin >> input;
+                    imie = new char[ strlen(input) + 1];
+                    memcpy( imie, input, strlen(input) + 1);
+                     cout << "podaj nazwisko: ";
+                    cin >> input;
+                    nazwisko = new char[ strlen(input) + 1];
+                    memcpy( nazwisko, input, strlen(input) + 1);
+                    cout << "podaj wiek: ";
+                    cin >> wiek;
+             }
+             Osoba(char* imie, char* nazwisko, int wiek, Osoba* dzieci){ 
+                    this->imie = new char[ strlen(imie) + 1];
+                    memcpy( this->imie, imie, strlen(imie) + 1);
+                    this->nazwisko = new char[ strlen(nazwisko) + 1];
+                    memcpy( this->nazwisko, nazwisko, strlen(nazwisko) + 1);
+                    this->wiek=wiek;
+             }
+             Osoba(Osoba &o){
+                    this->imie = new char[ strlen(o.imie) + 1];
+                    memcpy( this->imie, o.imie, strlen(o.imie) + 1);
+                    this->nazwisko = new char[ strlen(o.nazwisko) + 1];
+                    memcpy( this->nazwisko, o.nazwisko, strlen(o.nazwisko) + 1);
+                    addDzieci(o.dzieci);
+                    wiek=o.wiek;
+             }
+             Osoba(Osoba *o){
+                    this->imie = new char[ strlen(o->imie) + 1];
+                    memcpy( this->imie, o->imie, strlen(o->imie) + 1);
+                    this->nazwisko = new char[ strlen(o->nazwisko) + 1];
+                    memcpy( this->nazwisko, o->nazwisko, strlen(o->nazwisko) + 1);
+                    addDzieci(o->dzieci);
+                    wiek=o->wiek;
+             }
+            void addDzieci(Osoba* dz){
+                 int counter=0;
+                 while(dz!=null){
+                    counter++;
+                 }
+                 dzieci=new (*Osoba)[counter];
+                 for(int i=0;i<counter;i++){
+                     dzieci[i]=dz[i];
+                 }
+             }
+             ~Osoba(){
+                    delete[] imie;
+                    delete[] nazwisko;
+                    int a =0;
+                    while(dzieci != null){
+                        delete dzieci[a];
+                        a++;
+                    }
+             }
+             void opertator++(){
+                  wiek++;
+             }
+             void operator-(char pattern){
+                char* copy=new char[strlen(imie)+1];;
+                for(int i=0;i<strlen(imie);i++)
+                    if(imie[i]!=pattern){
+                        copy[i]=imie[i];
+                    }
+                    imie=new char(strlen(copy));
+                    strcpy(imie,copy);
+            }
+            void operator +(char pattern){
+                int counter=0;
+                char*copy=imie;
+                while(imie!=NULL)
+                    counter++;
+                imie=new char[strlen(imie)+2];
+                strcpy(imie,copy);
+                imie[counter-1]=pattern;
+            }
+             bool operator==(Osoba& o){
+                 if(o.wiek == wiek && o.nazwisko == nazwisko && o.imie==imie){
+                     int c=0;
+                     while(dzieci != null){
+                         c++;
+                     }
+                     int c1=0;
+                     while(o.dzieci != null){
+                         c1++;
+                     }
+                     if(c==c1){
+                         int a=0;
+                         while(dzieci != null){
+                            if(dzieci[a] == o.dzieci[a])
+                            a++;
+                            else return false;
+                         }       
+                         return true;
+                     }else return false;
+                 }else return false; 
+             }
+             bool operator==(Osoba* o){
+                 if(wiek == o->wiek && nazwisko == o->nazwisko && imie==o->imie){
+                     int c=0;
+                     while(dzieci != null){
+                         c++;
+                     }
+                     int c1=0;
+                     while(o->dzieci != null){
+                         c1++;
+                     }
+                     if(c==c1){
+                         int a=0;
+                         while(dzieci != null){
+                            if(dzieci[a] == o->dzieci[a])
+                            a++;
+                            else return false;
+                         }       
+                         return true;
+                     }else return false;
+                 }else return false; 
+             }
+};
+
+
+
+//zad. 2
+class Cplx{
+      double rz;
+      double u;
+      public:
+      Cplx(double rz, double u){
+           this->rz=rz;
+           this->u=u;
+      }
+      void add(Cplx l){
+           rz+=l.rz;
+           u+=l.u;
+      }
+      void sub(Cplx* l){
+           rz-=l->rz;
+           u-=l->u;
+      }
+      void mul(Cplx& l){
+           rz=(rz*l.rz)-(u-l.u);
+           u=(u*l.rz)+(rz+l.u);
+      }
+      void inc(){
+           rz+=1;
+      }
+      void show(){
+           if(rz!=0);
+                cout<<rz;
+           if(u>0)
+                cout<<"+"<<u<<"i"<<endl;
+           else if(u<0)
+                cout<<u<<"i"<<endl;
+      }
+    //ZAD 2
+    void operator ++(){
+        rz++;
+    }
+    //ZAD 3
+    Cplx operator+ (Cplx& l){
+        return Cplx((rz+l.rz),(u+l.u));   
+    }
+    friend Cplx operator-(Cplx& l, Cplx& l1);
+    friend ostream& operator<<(ostream& str, Cplx& l);
+};
+Cplx operator-(Cplx& l, Cplx& l1){
+     return Cplx((l.rz-l1.rz),(l.u-l1.u));
+}
+ostream& operator<<(ostream& str, Cplx& l){
+        if(l.rz!=0);
+            str<<l.rz;
+        if(l.u>0)
+            str<<"+"<<l.u<<"i"<<endl;
+        else if(l.u<0)
+            str<<l.u<<"i"<<endl;
+    return str;
+}
+
+
+int main()
+{
+    Cplx l=Cplx(10,3);
+    cout<<l;
+    system("PAUSE");
+    return 0;
+}
+
+zad.
+class PojazdMechaniczny{
+	public:
+	char * nazwa;
+	int wiek;
+	
+	PojazdMechaniczny (char * nazwa, int wiek):nazwa(nazwa), wiek(wiek){
+		
+	}
+	
+	virtual void show(){
+		cout<<"Pojazd"<<endl;
+	}
+};
+
+class Lodz : public PojazdMechaniczny{
+	public:
+	int wypornosc;
+	Samochod(char * nazwa, int wiek, int wypornosc):PojazdMechaniczny(nazwa, wiek), kolor(kolor), wypornosc(wypornosc){
+	}
+	
+	void show(){
+		cout << "lodz" << endl;
+	}
+};
+
+class Samochod : public PojazdMechaniczny{
+	public:
+	char * kolor;
+	int pojemnosc;
+	Samochod(char * nazwa, int wiek, char * kolor, int pojemnosc):PojazdMechaniczny(nazwa, wiek), kolor(kolor), pojemnosc(pojemnosc){
+	}
+	
+		void show(){
+		cout << "Samochod" << endl;
+	}
+	
+};
+
+class Amfibia : public PojazdMechaniczny, Samochod{
+	public:
+	char * kolor;
+	int pojemnosc;
+	Samochod(char * nazwa, int wiek, char * kolor, int pojemnosc):PojazdMechaniczny(nazwa, wiek), Samochod(kolor, pojemnosc){
+	}
+	
+		void show(){
+		cout << "Samochod" << endl;
+	}
+	
+};
+
+Template <PojazdMechaniczny, Samochod, Lodz, Amfibia>
+class Garaz{
+	//....
+};
+
+int main(){
+	PojazdMechaniczny * p = new PojazdMechaniczny("dupa", 1);
+	Samochod * s = new Samochod("gowno", 3, "zolc", 300);
+	Lodz * L = new Lamochod("gowno", 3, "zolc", 300);
+	
+	
+	p->show();
+	s->show();
+	L->show();
+	
+}

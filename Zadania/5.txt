@@ -1,0 +1,150 @@
+zad.1 
+union Dupa {
+	int x;
+	float y;
+};
+
+int main(){
+
+Dupa dupa;
+dupa.x = 100;
+cout << dupa.x << endl;
+dupa.y = 200;
+cout << dupa.y << endl;Dupa * dupnywskaznik = &dupa;
+cout << dupa.x << endl;
+
+dupnywskaznik->x = 900; 
+cout << dupa.x << endl;\
+
+zad.2
+
+struct Elemet {
+	char * imie;
+	Element next;
+};
+
+Element* getNewElement(){
+	char imie;
+	cout<< "Imie"<<endl;
+	sin>> imie;
+	Element temp = {imie};
+	Element pelem = &temp;
+	return pelem;
+}
+
+void insert(Element*){
+	
+}
+
+void show(){
+	
+}
+/*
+union Unia1 {
+char* imie; 
+int wiek;
+bool plec;	
+};
+
+struct Cstruktura{
+char* imie; 
+int wiek;
+bool plec;	
+};
+*/
+
+
+main int(){
+Element* lista[] = new Element{ , };
+
+struct Wezel {
+      5.      double szer;
+      6.      double wyso;
+      7.      Wezel *next;
+      8.  };
+      9.  
+     10.  void wstaw_dane(Wezel* n, double s, double w, Wezel* next);
+     11.  void drukuj_liste(const Wezel* n);
+     12.  void drukuj_liste_odwrotnie(const Wezel* n);
+     13.  
+     14.  int main() {
+     15.      Wezel A = {4, 44, nullptr};        ➊
+     16.      Wezel B, D, *head;
+     17.  
+     18.      Wezel* pC = new Wezel;             ➋
+     19.  
+     20.      wstaw_dane(&B,3,33,&A);
+     21.      wstaw_dane(pC,2,22,&B);
+     22.      wstaw_dane(&D,1,11,pC);
+     23.  
+     24.      head = &D;                         ➌
+     25.  
+     26.      drukuj_liste(head);
+     27.      drukuj_liste_odwrotnie(head);
+     28.  
+     29.      delete pC;
+     30.  }
+     31.  
+     32.  void wstaw_dane(Wezel* n, double s, double w, Wezel* next) {
+     33.      n->szer = s;
+     34.      n->wyso = w;
+     35.      n->next = next;
+     36.  }
+     37.  
+     38.  void drukuj_liste(const Wezel* n) {
+     39.      for ( ; n; n = n->next )
+     40.          cout << n->szer << " " << n->wyso << "; ";
+     41.      cout << endl;
+     42.  }
+     43.  
+     44.  void drukuj_liste_odwrotnie(const Wezel* n) {
+     45.      if (n == nullptr) return;  // pusta lista
+     46.      if (n->next != nullptr)            ➍
+     47.          drukuj_liste_odwrotnie(n->next);
+     48.      cout << n->szer << " " << n->wyso << "; ";
+     49.  }
+	 
+	 /*	Unia.imie = &;
+	int tab[] = {1,2,3,4};
+	int * pk = tab+1;
+	//int *(pk+1)
+	cout << *(pk+1)<< endl;
+//} 
+
+	struct Element 
+{
+    char* imie;
+    Element* next;
+};
+
+Element* lista = 0; 
+Element* GetNextElement(){
+    char* imie = new char[1024]; 
+    cin >> imie;
+    Element* n = new Element; 
+    n->imie = imie; 
+    n->next = 0; 
+
+    return n; 
+}
+
+void insert(Element* element){
+    if (lista != 0) {
+        Element* tmp = lista; 
+        while (tmp->next != 0) 
+            tmp = tmp->next; 
+
+        tmp->next = element; 
+    }
+    else
+        lista = element; 
+}
+
+void show(){
+    Element* tmp = lista;
+    while (tmp != 0){
+        cout << tmp->imie << endl; 
+        tmp = tmp->next; 
+    }
+    cout << endl;
+}

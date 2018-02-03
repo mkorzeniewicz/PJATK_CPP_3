@@ -1,0 +1,233 @@
+zad. 1, 2, 3
+class Osoba
+{
+private:
+	int _wiek;
+	char* _imie;
+public:
+	Osoba();
+	Osoba(char*, int);
+	void show();
+	~Osoba();
+};
+
+/*class iOsoba {
+	char* imie;
+	int wiek;
+
+public:
+	iOsoba(){
+	}
+	Osoba (char * x, int y): imie(x), wiek(y){
+	cout << x << y << endl;	
+	}
+}
+	
+	 //Osoba asia; */
+int main(){
+
+	/*Osoba * kasia = new Osoba("kasia", 3);
+	 Osoba ania = Osoba("ania", 4);
+	 Osoba zosia("zosia", 4);
+	 */
+	 //Osoba osoba(2, "Jasiek");
+	//osoba.show();
+	//int x = 10;
+
+	//Osoba* osoba1 = new Osoba(50, "Kamil");
+	//osoba1->show();
+	//delete osoba1;
+
+	Osoba* osoba = new Osoba("Jan", 41);
+	osoba->show();
+	Osoba& ref = *osoba;
+	ref.show();
+	Osoba* n0s = new Osoba(ref);
+	n0s->show();
+
+    return 0;
+
+}
+
+
+Osoba::Osoba()
+{
+	this->_imie = new char[5];
+}
+
+Osoba::Osoba(char* imie, int wiek) : _imie(imie), _wiek(wiek)
+{
+	//this->_wiek = wiek;
+}
+
+void Osoba::show() {
+	//this->_wiek;
+	cout << this->_wiek << " " << this->_imie << endl;
+	system("pause");
+}
+
+Osoba::~Osoba()
+{
+	//std::cout << this->_wiek << std::endl;
+	//delete _imie;
+	system("pause");
+}
+
+
+class Osoba
+{
+private:
+	int _wiek;
+	char* _imie;
+public:
+	Osoba();
+	Osoba(char*, int);
+	void show();
+	~Osoba();
+};
+
+class Rachunek{
+	private:
+	Osoba wlasciciel;
+	double stan_konta;
+	
+	public:
+		Rachunek(Osoba, double);
+		~Rachunek();
+
+};
+
+class Bank{
+	private:
+	Rachunek rachunek;
+	rachunek *;
+	
+	public:
+		Bank();
+		~Bank();
+		
+	otworzNowyRachunek(Osoba osoba, double stan_konta){
+		Rachunek * nowy = new Rachunek;
+		
+	};
+	
+	zmienWlasciciela(){
+	};
+	
+	usunRachunek(){
+		
+	};
+	
+};
+
+int main(){
+	
+	
+}
+Rachunek::Rachunek(Osoba wlasciciel, double stan_konta):wlasciciel(wlasciciel), stan_konta(stan_konta){
+	
+}
+
+Rachunek::~Rachunek(){
+}
+
+Bank::Bank():rachunek(){
+}
+
+
+Osoba::Osoba()
+{
+	this->_imie = new char[5];
+}
+
+Osoba::Osoba(char* imie, int wiek) : _imie(imie), _wiek(wiek)
+{
+	//this->_wiek = wiek;
+}
+
+void Osoba::show() {
+	//this->_wiek;
+	cout << this->_wiek << " " << this->_imie << endl;
+	system("pause");
+}
+
+Osoba::~Osoba()
+{
+	//std::cout << this->_wiek << std::endl;
+	//delete _imie;
+	system("pause");
+}
+
+LISTA
+using namespace std;
+      3.  
+      4.  class List {
+      5.  
+      6.      struct Node {
+      7.          int    elem;
+      8.          Node* next;
+      9.  
+     10.          Node(int elem, Node* next = 0)
+     11.              : elem(elem), next(next)
+     12.          { }
+     13.      };
+     14.  
+     15.      Node* head;
+     16.  
+     17.  public:
+     18.      List()
+     19.          : head(0)
+     20.      { }
+     21.  
+     22.      List& operator+(int elem) {
+     23.          Node* w = new Node(elem);
+     24.          if (head) {
+     25.              Node *h = head;
+     26.              while (h->next) h = h->next;
+     27.              h->next = w;
+     28.          } else {
+     29.              head = w;
+     30.          }
+     31.          return *this;
+     32.      }
+     33.  
+     34.      List& operator-(int elem) {
+     35.          head = new Node(elem,head);
+     36.          return *this;
+     37.      }
+     38.  
+     39.      int operator!() const {
+     40.          int cnt = 0;
+     41.          for (Node* h = head; h ; h = h->next, ++cnt);
+     42.          return cnt;
+     43.      }
+     44.  
+     45.      ~List() {
+     46.          Node *prev, *curr = head;
+     47.          while (curr) {
+     48.              prev = curr;
+     49.              curr = curr->next;
+     50.              cerr << "usuwanie: " << prev->elem << endl;
+     51.              delete prev;
+     52.          }
+     53.      }
+     54.  
+     55.      friend ostream& operator<<(ostream&, const List&);
+     56.  };
+     57.  
+     58.  ostream& operator<<(ostream& s, const List& L) {
+     59.          for(List::Node* h = L.head ; h ; h = h->next)
+     60.              s << h->elem << " ";
+     61.          return s;
+     62.  }
+     63.  
+     64.  int main() {
+     65.      List list;
+     66.  
+     67.      list + 1;
+     68.      list + 2 - 0 - (-1);
+     69.      cout <<  list+3  << endl;
+     70.      cout << "List ma " << !list << " elementow" << endl;
+     71.  }
+
+	 
